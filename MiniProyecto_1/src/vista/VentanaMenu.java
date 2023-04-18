@@ -20,6 +20,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JOptionPane;
+import modelo.Jugador;
 
 /**
  *
@@ -27,6 +28,7 @@ import javax.swing.JOptionPane;
  */
 public class VentanaMenu extends JFrame {
     
+    private String nombre;
     private java.awt.Label TituloMenu;
     private JButton btnJugar;
     private JButton btnInstrucciones;
@@ -48,7 +50,7 @@ public class VentanaMenu extends JFrame {
         setVisible(true); 
         setResizable(false);
         setLayout(null);
-        
+         
         Toolkit miPantalla = Toolkit.getDefaultToolkit();
          
         jpContenido = new JPanel();
@@ -119,13 +121,14 @@ public class VentanaMenu extends JFrame {
         Image miIcono = miPantalla.getImage("src/imagenes/icono.png");
 	setIconImage(miIcono);
     }
-
-    private void iniciarJuego(){
+    
+    private void iniciarTematica(){
         String nombre =txtNombre.getText();
         if(!nombre.trim().isEmpty() || nombre.trim().length() > 0){
-            //Jugador jugador = new Jugador(nombre);        
+            Jugador jugador = new Jugador(nombre);
             dispose(); 
-            //VentanaTematica ventanaJuego = new VentanaTematica(jugador);              
+            VentanaJuego ventanajuego = new VentanaJuego(jugador);
+            VentanaTematica ventanaTematica = new VentanaTematica();
         } else {
             JOptionPane.showMessageDialog(null,"Por favor ingrese su nombre", 
                     "Advertencia", JOptionPane.ERROR_MESSAGE);
@@ -137,10 +140,11 @@ public class VentanaMenu extends JFrame {
         @Override
         public void actionPerformed(ActionEvent evento){
             if(evento.getSource() == btnJugar){                
-                iniciarJuego();
+                iniciarTematica();
             }
             if(evento.getSource() == btnInstrucciones){                
-                
+                dispose(); 
+                VentanaInstrucciones Instrucciones = new VentanaInstrucciones();
             }
             if(evento.getSource() == btnSalir){                
                 System.exit(0);
