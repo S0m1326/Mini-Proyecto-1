@@ -27,38 +27,32 @@ import logica.Juego;
 public class VentanaJuego extends JFrame {
     
     private String[] Tematica;    
-    private JLabel TituloMenu;
     private JPanel jpContenido;
-    private GridLayout glEstadisticas;
-    private JPanel jpEstadisticas;
+    private GridLayout PanelBotones;
     private JPanel jpBotones;
-    private JButton btnColores;
-    private JButton btnFrutas;
-    private JButton btnAnimales;
+    private JButton btnA;
+    private JButton btnE;
+    private JButton btnI;
+    private JButton btnO;
+    private JButton btnU;
+    private JButton btnTerminar;
     private JLabel jlTitulo;
     private JLabel jlJugador;
     private JLabel jlPalabras;
     private JLabel jlAciertos;
     private JLabel jlFallos;
-    
     private Juego juego;
     
-    public VentanaJuego(Jugador jugador) {
-        juego = new Juego(jugador);
-        juego.getJugador();
-    }
-    
-    public VentanaJuego(String[] Tematica){
-        this.Tematica = Tematica;
+    public VentanaJuego(Jugador jugador, String[] Tematica) {
+        juego = new Juego(jugador, Tematica);
         initComponents();
     }
     
-    //public VentanaJuego(String Jugador){
-        //this.Jugador = Jugador;
-    //}
-    
     private void initComponents() {
-        setTitle("Juego");
+        String nombre = juego.getJugador();
+        nombre =    nombre.substring(0,1).toUpperCase() + 
+                    nombre.substring(1).toLowerCase();
+        setTitle(nombre);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(519,530);
         setLocationRelativeTo(null);
@@ -69,12 +63,13 @@ public class VentanaJuego extends JFrame {
         Toolkit miPantalla = Toolkit.getDefaultToolkit();
          
         jpContenido = new JPanel();
+        jpBotones = new JPanel();
         
         jlTitulo = new JLabel("FUGA DE LETRAS",SwingConstants.CENTER);
         jlTitulo.setFont(new Font("Showcard Gothic", Font.PLAIN, 36));
         
         jpContenido.setBackground(new java.awt.Color(178, 221, 185));
-        jpContenido.setSize(520,400);        
+        jpContenido.setSize(520,500);        
         jpContenido.setBounds(0,0, 519, 500);
         jpContenido.setLayout(null);
         
@@ -83,48 +78,86 @@ public class VentanaJuego extends JFrame {
         jlTitulo.setBounds(0,20, 519,50);
         jlTitulo.setForeground(Color.BLACK); 
         
-        glEstadisticas = new GridLayout(2,2);
-        jpEstadisticas = new JPanel();
-        jpEstadisticas.setBackground(new java.awt.Color(0, 221, 185));
-        jpEstadisticas.setSize(400,100);        
-        jpEstadisticas.setBounds(55,100, 400, 100);
-        
-        
-        String nombre = juego.getJugador();
-        nombre =    nombre.substring(0,1).toUpperCase() + 
-                    nombre.substring(1).toLowerCase();
-        jlJugador = new JLabel(nombre,SwingConstants.CENTER );
+        jlJugador = new JLabel("Jugador: "+nombre,SwingConstants.CENTER );
         jlJugador.setFont(new java.awt.Font("Arial", 0, 25));
-        jpEstadisticas.add(jlJugador);
+        jlJugador.setBounds(0,60,520,50);
         
+        jlPalabras = new JLabel("Palabras mostradas: ",SwingConstants.CENTER );
+        jlPalabras.setFont(new java.awt.Font("Arial", 0, 25));
+        jlPalabras.setBounds(100,100,250,50);
+        
+        jlAciertos = new JLabel("Aciertos: ",SwingConstants.CENTER );
+        jlAciertos.setFont(new java.awt.Font("Arial", 0, 25));
+        jlAciertos.setBounds(100,140,125,50);
+        
+        jlFallos = new JLabel("Fallos: ",SwingConstants.CENTER );
+        jlFallos.setFont(new java.awt.Font("Arial", 0, 25));
+        jlFallos.setBounds(240,140,125,50);
+        
+        jpContenido.add(jlJugador);
+        jpContenido.add(jlPalabras);
+        jpContenido.add(jlAciertos);
+        jpContenido.add(jlFallos);
         jpContenido.add(jlTitulo);
-        jpEstadisticas.setLayout(glEstadisticas);
-        jpContenido.add(jpEstadisticas);
         
-        btnColores = new JButton("COLORES");
-        btnColores.setFont(new java.awt.Font("Arial", 0, 25));
-        btnColores.setBounds(50,150, 410,50);
-        btnColores.setBackground(new java.awt.Color(245, 166, 166));
-        btnColores.setForeground(new java.awt.Color(0, 0, 0));
-        btnColores.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        PanelBotones = new GridLayout(1,5);
+        jpBotones.setLayout(PanelBotones);
+        jpContenido.add(jpBotones);
+        jpBotones.setBackground(new java.awt.Color(178, 221, 185));
+        jpBotones.setSize(450,100);        
+        jpBotones.setBounds(30,300, 450, 100);
         
-        btnFrutas = new JButton("FRUTAS");
-        btnFrutas.setFont(new java.awt.Font("Arial", 0, 25));
-        btnFrutas.setBounds(50,220, 410,50);
-        btnFrutas.setBackground(new java.awt.Color(124, 168, 233));
-        btnFrutas.setForeground(new java.awt.Color(0, 0, 0));
-        btnFrutas.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        PanelBotones.setHgap(10);
         
-        btnAnimales = new JButton("ANIMALES");
-        btnAnimales.setFont(new java.awt.Font("Arial", 0, 25));
-        btnAnimales.setBounds(50,290, 410,50);
-        btnAnimales.setBackground(new java.awt.Color(245, 218, 166));
-        btnAnimales.setForeground(new java.awt.Color(0, 0, 0));
-        btnAnimales.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        btnA = new JButton("A");
+        btnA.setFont(new java.awt.Font("Arial", 0, 25));
+//        btnA.setBounds(50,150, 410,50);
+        btnA.setBackground(new java.awt.Color(245, 166, 166));
+        btnA.setForeground(new java.awt.Color(0, 0, 0));
+        btnA.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         
-        jpContenido.add(btnColores);
-        jpContenido.add(btnFrutas);
-        jpContenido.add(btnAnimales);
+        btnE = new JButton("E");
+        btnE.setFont(new java.awt.Font("Arial", 0, 25));
+//        btnE.setBounds(50,290, 410,50);
+        btnE.setBackground(new java.awt.Color(245, 218, 166));
+        btnE.setForeground(new java.awt.Color(0, 0, 0));
+        btnE.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));        
+        
+        btnI = new JButton("I");
+        btnI.setFont(new java.awt.Font("Arial", 0, 25));
+//        btnI.setBounds(50,220, 410,50);
+        btnI.setBackground(new java.awt.Color(124, 168, 233));
+        btnI.setForeground(new java.awt.Color(0, 0, 0));
+        btnI.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        
+        btnO = new JButton("O");
+        btnO.setFont(new java.awt.Font("Arial", 0, 25));
+//        btnO.setBounds(50,290, 410,50);
+        btnO.setBackground(new java.awt.Color(245, 218, 166));
+        btnO.setForeground(new java.awt.Color(0, 0, 0));
+        btnO.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        
+        btnU = new JButton("U");
+        btnU.setFont(new java.awt.Font("Arial", 0, 25));
+//        btnU.setBounds(50,290, 410,50);
+        btnU.setBackground(new java.awt.Color(245, 218, 166));
+        btnU.setForeground(new java.awt.Color(0, 0, 0));
+        btnU.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        
+        jpBotones.add(btnA);
+        jpBotones.add(btnE);
+        jpBotones.add(btnI);
+        jpBotones.add(btnO);
+        jpBotones.add(btnU);
+        
+        btnTerminar = new JButton("Terminar Juego");
+        btnTerminar.setFont(new java.awt.Font("Arial", 0, 25));
+        btnTerminar.setBounds(50,450, 450,50);
+        btnTerminar.setBackground(new java.awt.Color(245, 218, 166));
+        btnTerminar.setForeground(new java.awt.Color(0, 0, 0));
+        btnTerminar.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        
+        jpContenido.add(btnTerminar);
         
         Image miIcono = miPantalla.getImage("src/imagenes/icono.png");
 	setIconImage(miIcono);

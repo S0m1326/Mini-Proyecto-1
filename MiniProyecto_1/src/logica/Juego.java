@@ -13,19 +13,22 @@ import vista.VentanaJuego;
  * @author Sebastián
  */
 public class Juego {
-    //private String [] Tematica;
+    private String [] Tematica;
     private Jugador jugador;
     
-    public Juego(Jugador jugador){
+    public Juego(Jugador jugador, String Tematica[]){
         this.jugador = jugador;
+        this.Tematica = Tematica;
     }
-    
-    //public Juego(String Tematica[]){
-        //this.Tematica = Tematica;
-    //}
     
     public String getJugador(){
         return jugador.getNombre();
     }
+
+    public String[] getTematica() {
+        return Tematica;
+    }
+    
+    
 }
 
