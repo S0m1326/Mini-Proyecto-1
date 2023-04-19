@@ -29,7 +29,6 @@ import modelo.Jugador;
 public class VentanaMenu extends JFrame {
     
     private String nombre;
-    private java.awt.Label TituloMenu;
     private JButton btnJugar;
     private JButton btnInstrucciones;
     private JButton btnSalir;
