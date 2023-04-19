@@ -10,6 +10,9 @@ package modelo;
  */
 public class Jugador {
     private String nombre;
+    private int palabras;
+    private int aciertos;
+    private int fallos;
     
     public Jugador(){
         nombre = "Jugador 1";
@@ -19,6 +22,12 @@ public class Jugador {
         this.nombre = nombre;
     }
 
+    public Jugador(int palabras, int aciertos, int fallos) {
+        this.palabras = palabras;
+        this.aciertos = aciertos;
+        this.fallos = fallos;
+    }
+    
     public String getNombre() {
         return nombre;
     }
@@ -26,4 +35,22 @@ public class Jugador {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public void setPlabras(int palabras) {
+        this.palabras = palabras;
+    }
+    
+    public int getPalabras() {
+        return palabras;
+    }
+
+    public int getAciertos() {
+        return aciertos;
+    }
+
+    public int getFallos() {
+        return fallos;
+    }
+    
+    
 }

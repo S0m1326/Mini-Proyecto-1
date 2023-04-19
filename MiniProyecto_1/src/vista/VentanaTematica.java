@@ -35,6 +35,9 @@ public class VentanaTematica extends JFrame {
     private JLabel jlTematica;
     private JLabel jlNombre;
     private JTextField txtNombre;
+    private String[] Colores = {"rojo", "amarillo",  "rosa" ,"verde", "blanco", "violeta"};
+    private String[] Frutas = {"papaya","mango", "manzana",  "tomate" ,"chontaduro", "kiwi", "banano"};
+    private String[] Animales = {"perro","elefante", "gato",  "tigre" ,"conejo", "pajaro", "jirafa"};
     
     public VentanaTematica() {
         initComponents();
@@ -127,9 +130,6 @@ public class VentanaTematica extends JFrame {
     
     private void iniciarJuego(int numero){
         String nombre =txtNombre.getText();
-        String[] Colores = {"rojo", "amarillo",  "rosa" ,"verde", "blanco", "violeta"};
-        String[] Frutas = {"papaya","mango", "manzana",  "tomate" ,"chontaduro", "kiwi", "banano"};
-        String[] Animales = {"perro","elefante", "gato",  "tigre" ,"conejo", "pajaro", "jirafa"};
         if(!nombre.trim().isEmpty() || nombre.trim().length() > 0){
             Jugador jugador = new Jugador(nombre);
             dispose(); 

@@ -41,15 +41,23 @@ public class VentanaJuego extends JFrame {
     private JLabel jlPalabras;
     private JLabel jlAciertos;
     private JLabel jlFallos;
+    private JLabel jlPalabra;
     private Juego juego;
+    private int palabraActualIndex = 0;
+    private String palabraActual;
+    private int contador = 0;
+    private int aciertos = 0;
+    private int fallos = 0;
+    private String[] tematica;
     
-    public VentanaJuego(Jugador jugador, String[] Tematica) {
-        juego = new Juego(jugador, Tematica);
+    public VentanaJuego(Jugador jugador, String[] tematica) {
+        juego = new Juego(jugador, tematica);
         initComponents();
     }
     
     private void initComponents() {
         String nombre = juego.getJugador();
+        tematica = juego.getTematica();
         nombre =    nombre.substring(0,1).toUpperCase() + 
                     nombre.substring(1).toLowerCase();
         setTitle(nombre);
@@ -78,22 +86,27 @@ public class VentanaJuego extends JFrame {
         jlTitulo.setBounds(0,20, 519,50);
         jlTitulo.setForeground(Color.BLACK); 
         
+        jlPalabra = new JLabel("",SwingConstants.CENTER);
+        jlPalabra.setFont(new java.awt.Font("Arial", 0, 75));
+        jlPalabra.setBounds(0,200,520,75);
+        
         jlJugador = new JLabel("Jugador: "+nombre,SwingConstants.CENTER );
         jlJugador.setFont(new java.awt.Font("Arial", 0, 25));
         jlJugador.setBounds(0,60,520,50);
         
-        jlPalabras = new JLabel("Palabras mostradas: ",SwingConstants.CENTER );
+        jlPalabras = new JLabel("Palabras mostradas: " + contador, SwingConstants.CENTER );
         jlPalabras.setFont(new java.awt.Font("Arial", 0, 25));
-        jlPalabras.setBounds(100,100,250,50);
+        jlPalabras.setBounds(0,100,520,50);
         
-        jlAciertos = new JLabel("Aciertos: ",SwingConstants.CENTER );
+        jlAciertos = new JLabel("Aciertos: " + aciertos );
         jlAciertos.setFont(new java.awt.Font("Arial", 0, 25));
-        jlAciertos.setBounds(100,140,125,50);
+        jlAciertos.setBounds(110,140,125,50);
         
-        jlFallos = new JLabel("Fallos: ",SwingConstants.CENTER );
+        jlFallos = new JLabel("Fallos: " + fallos );
         jlFallos.setFont(new java.awt.Font("Arial", 0, 25));
-        jlFallos.setBounds(240,140,125,50);
+        jlFallos.setBounds(300,140,125,50);
         
+        jpContenido.add(jlPalabra);
         jpContenido.add(jlJugador);
         jpContenido.add(jlPalabras);
         jpContenido.add(jlAciertos);
@@ -110,35 +123,35 @@ public class VentanaJuego extends JFrame {
         PanelBotones.setHgap(10);
         
         btnA = new JButton("A");
-        btnA.setFont(new java.awt.Font("Arial", 0, 25));
+        btnA.setFont(new java.awt.Font("Britannic Bold", 0, 75));
 //        btnA.setBounds(50,150, 410,50);
-        btnA.setBackground(new java.awt.Color(245, 166, 166));
+        btnA.setBackground(new java.awt.Color(245, 218, 166));
         btnA.setForeground(new java.awt.Color(0, 0, 0));
         btnA.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         
         btnE = new JButton("E");
-        btnE.setFont(new java.awt.Font("Arial", 0, 25));
+        btnE.setFont(new java.awt.Font("Britannic Bold", 0, 75));
 //        btnE.setBounds(50,290, 410,50);
         btnE.setBackground(new java.awt.Color(245, 218, 166));
         btnE.setForeground(new java.awt.Color(0, 0, 0));
         btnE.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));        
         
         btnI = new JButton("I");
-        btnI.setFont(new java.awt.Font("Arial", 0, 25));
+        btnI.setFont(new java.awt.Font("Britannic Bold", 0, 75));
 //        btnI.setBounds(50,220, 410,50);
-        btnI.setBackground(new java.awt.Color(124, 168, 233));
+        btnI.setBackground(new java.awt.Color(245, 218, 166));
         btnI.setForeground(new java.awt.Color(0, 0, 0));
         btnI.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         
         btnO = new JButton("O");
-        btnO.setFont(new java.awt.Font("Arial", 0, 25));
+        btnO.setFont(new java.awt.Font("Britannic Bold", 0, 75));
 //        btnO.setBounds(50,290, 410,50);
         btnO.setBackground(new java.awt.Color(245, 218, 166));
         btnO.setForeground(new java.awt.Color(0, 0, 0));
         btnO.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         
         btnU = new JButton("U");
-        btnU.setFont(new java.awt.Font("Arial", 0, 25));
+        btnU.setFont(new java.awt.Font("Britannic Bold", 0, 75));
 //        btnU.setBounds(50,290, 410,50);
         btnU.setBackground(new java.awt.Color(245, 218, 166));
         btnU.setForeground(new java.awt.Color(0, 0, 0));
@@ -152,8 +165,8 @@ public class VentanaJuego extends JFrame {
         
         btnTerminar = new JButton("Terminar Juego");
         btnTerminar.setFont(new java.awt.Font("Arial", 0, 25));
-        btnTerminar.setBounds(50,450, 450,50);
-        btnTerminar.setBackground(new java.awt.Color(245, 218, 166));
+        btnTerminar.setBounds(30,425, 450,50);
+        btnTerminar.setBackground(new java.awt.Color(124, 168, 233));
         btnTerminar.setForeground(new java.awt.Color(0, 0, 0));
         btnTerminar.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         
@@ -161,6 +174,69 @@ public class VentanaJuego extends JFrame {
         
         Image miIcono = miPantalla.getImage("src/imagenes/icono.png");
 	setIconImage(miIcono);
+        
+        VentanaJuego.ManejadorDeEventos manejadorEventos = new VentanaJuego.ManejadorDeEventos();
+        
+        btnA.addActionListener(manejadorEventos);
+        btnE.addActionListener(manejadorEventos);
+        btnI.addActionListener(manejadorEventos);
+        btnO.addActionListener(manejadorEventos);
+        btnU.addActionListener(manejadorEventos);
+        btnTerminar.addActionListener(manejadorEventos);
+        
+        cambiarPalabra(jlPalabra);
+    }
+    
+    private void cambiarPalabra(JLabel jlPalabra) {
+        contador = contador+1;
+        palabraActual = tematica[palabraActualIndex++];
+        String palabraMostrar = palabraActual.substring(0, palabraActual.length() - 1) + "_";
+        jlPalabra.setText(palabraMostrar);
+        if (palabraActualIndex == tematica.length) {
+            palabraActualIndex = 0;
+        }
+    }
+    
+    private void verificacion (String letra) {
+        if (letra.equalsIgnoreCase(palabraActual.substring(palabraActual.length() - 1))) {
+            aciertos++;
+            jlAciertos.setText("Aciertos: " + aciertos);
+            cambiarPalabra(jlPalabra);
+        } else {
+            fallos++;
+            jlFallos.setText("Fallos: " + fallos);
+        }
+    }
+    
+    class ManejadorDeEventos implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent evento){
+            if(evento.getSource() == btnA){             
+                String letra = btnA.getText();
+                verificacion(letra);
+            }
+            if(evento.getSource() == btnE){
+                String letra = btnE.getText();
+                verificacion(letra);
+            }
+            if(evento.getSource() == btnI){
+                String letra = btnI.getText();
+                verificacion(letra);
+            }
+            if(evento.getSource() == btnO){
+                String letra = btnO.getText();
+                verificacion(letra);
+            }
+            if(evento.getSource() == btnU){
+                String letra = btnU.getText();
+                verificacion(letra);
+            }
+            if(evento.getSource() == btnTerminar){
+                dispose();
+                Jugador jugador = new Jugador (contador, aciertos, fallos);
+                VentanaEstadisticas ventanaestadisticas = new VentanaEstadisticas(jugador);
+            }
+        }
     }
 }
     
