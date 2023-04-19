@@ -35,9 +35,9 @@ public class VentanaTematica extends JFrame {
     private JLabel jlTematica;
     private JLabel jlNombre;
     private JTextField txtNombre;
-    private String[] Colores = {"rojo", "amarillo",  "rosa" ,"verde", "blanco", "violeta"};
-    private String[] Frutas = {"papaya","mango", "manzana",  "tomate" ,"chontaduro", "kiwi", "banano"};
-    private String[] Animales = {"perro","elefante", "gato",  "tigre" ,"conejo", "pajaro", "jirafa"};
+    private String[] Colores = {"ROJO", "AMARILLO",  "ROSA" ,"VERDE", "BLANCO", "VIOLETA"};
+    private String[] Frutas = {"PAPAYA","MANGO", "MANZANA",  "TOMATE" ,"FRESA", "KIWI", "BANANO"};
+    private String[] Animales = {"PERRO","ELEFANTE","JIRAFA", "GATO",  "TIGRE" ,"CONEJO", "PALOMA"};
     
     public VentanaTematica() {
         initComponents();

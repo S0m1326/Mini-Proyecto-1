@@ -39,6 +39,8 @@ public class VentanaEstadisticas extends JFrame {
     private double prc_Aciertos;
     private double prc_Fallos;
     private Juego Juego;
+    private JButton btnInicio;
+    private JPanel jpBotones;
     
     public VentanaEstadisticas(Jugador jugadorEst) {
         Juego = new Juego(jugadorEst);
@@ -66,6 +68,7 @@ public class VentanaEstadisticas extends JFrame {
         Toolkit miPantalla = Toolkit.getDefaultToolkit();
          
         jpContenido = new JPanel();
+        jpBotones = new JPanel();
         
         jlTitulo = new JLabel("ESTADÍSTICAS",SwingConstants.CENTER);
         jlTitulo.setFont(new Font("Showcard Gothic", Font.PLAIN, 60));
@@ -100,9 +103,18 @@ public class VentanaEstadisticas extends JFrame {
         jpContenido.add(jlFallos);
         jpContenido.add(jlAciertos);
         
+        btnInicio = new JButton("INICIO");
+        btnInicio.setFont(new java.awt.Font("Arial", 0, 25));
+        btnInicio.setBounds(110,255, 300,40);
+        btnInicio.setBackground(new java.awt.Color(245, 218, 166));
+        btnInicio.setForeground(new java.awt.Color(0, 0, 0));
+        btnInicio.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        
+        jpContenido.add(btnInicio);
+        
         btnSalir = new JButton("Salir");
         btnSalir.setFont(new java.awt.Font("Arial", 0, 25));
-        btnSalir.setBounds(50,270, 410,50);
+        btnSalir.setBounds(110,310, 300,40);
         btnSalir.setBackground(new java.awt.Color(245, 166, 166));
         btnSalir.setForeground(new java.awt.Color(0, 0, 0));
         btnSalir.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
@@ -114,7 +126,14 @@ public class VentanaEstadisticas extends JFrame {
         
         VentanaEstadisticas.ManejadorDeEventos manejadorEventos = new VentanaEstadisticas.ManejadorDeEventos();
         
+            
+        btnInicio.addActionListener(manejadorEventos);
+        
         btnSalir.addActionListener(manejadorEventos);
+    }
+    
+    private void iniciarMenu(){
+        
     }
     
     class ManejadorDeEventos implements ActionListener{
@@ -123,6 +142,12 @@ public class VentanaEstadisticas extends JFrame {
             if(evento.getSource() == btnSalir){
                 System.exit(0);
             }
+            if(evento.getSource() == btnInicio){                
+                dispose();
+                iniciarMenu();
+                VentanaMenu Menu = new VentanaMenu();
+            }
         }
+              
     }
 }
