@@ -27,14 +27,11 @@ import javax.swing.JOptionPane;
  */
 public class VentanaInstrucciones extends JFrame {
     
-    private JButton btnColores;
-    private JButton btnFrutas;
-    private JButton btnAnimales;
     private JPanel jpContenido;
     private JLabel jlTitulo;
-    private JLabel jlTematica;
-    private JLabel jlNombre;
-    private JTextField txtNombre;
+    private JLabel instrucciones;
+    private JButton btnAtras;
+    private String texto;
     
     public VentanaInstrucciones() {
         initComponents();
@@ -53,12 +50,17 @@ public class VentanaInstrucciones extends JFrame {
          
         jpContenido = new JPanel();
         
+        String texto = "Fuga de Vocales, es un juego muy divertido\n"
+                +  "y sencillo, para empezar debes hacer lo siguiente:\n" +
+                   "\n1. Agregar tu Nombre. " +
+                   "\n2. Escoger la temática con la que deseas jugar. " +
+                   "\n3. Ver la palabra en pantalla y escoger la vocal que le hace falta. " +
+                   "\n4. Eso es todo amigos";
+        
         jlTitulo = new JLabel("FUGA DE LETRAS",SwingConstants.CENTER);
         jlTitulo.setFont(new Font("Showcard Gothic", Font.PLAIN, 36));
-        jlTematica = new JLabel("Selecciona la temática del juego:",SwingConstants.CENTER );
-        jlTematica.setFont(new java.awt.Font("Arial", 0, 25));
-        jlNombre = new JLabel("Ingresa tu nombre:",SwingConstants.CENTER );
-        jlNombre.setFont(new java.awt.Font("Arial", 0, 25));
+        instrucciones = new JLabel(texto);
+        instrucciones.setFont(new java.awt.Font("Arial", 0, 25));
         
         jpContenido.setBackground(new java.awt.Color(178, 221, 185));
         jpContenido.setSize(520,500);        
@@ -70,50 +72,20 @@ public class VentanaInstrucciones extends JFrame {
         jlTitulo.setBounds(0,20, 520,50);
         jlTitulo.setForeground(Color.BLACK); 
         
-        jlNombre.setBounds(0,100, 520,35);
-        jlNombre.setForeground(new Color(0,0,0));
-        
-        jlTematica.setBounds(0,200, 520,35);
-        jlTematica.setForeground(new Color(0,0,0));
+        instrucciones.setBounds(0,100, 510,500);
+        instrucciones.setForeground(new Color(0,0,0));
         
         jpContenido.add(jlTitulo);
-        jpContenido.add(jlTematica);
-        jpContenido.add(jlNombre);
+        jpContenido.add(instrucciones);
         
-        txtNombre = new JTextField("");
-        txtNombre.setHorizontalAlignment(JTextField.CENTER);
-        txtNombre.setForeground(Color.GRAY);
-        txtNombre.setFont(new Font("arial", Font.BOLD, 20)); 
-        txtNombre.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        btnAtras = new JButton("ATRAS");
+        btnAtras.setFont(new java.awt.Font("Arial", 0, 25));
+        btnAtras.setBounds(50,400, 410,50);
+        btnAtras.setBackground(new java.awt.Color(245, 166, 166));
+        btnAtras.setForeground(new java.awt.Color(0, 0, 0));
+        btnAtras.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         
-        jpContenido.add(txtNombre);
-        
-        txtNombre.setBounds(50,140,410, 40);
-        
-        btnColores = new JButton("COLORES");
-        btnColores.setFont(new java.awt.Font("Arial", 0, 25));
-        btnColores.setBounds(50,250, 410,50);
-        btnColores.setBackground(new java.awt.Color(245, 166, 166));
-        btnColores.setForeground(new java.awt.Color(0, 0, 0));
-        btnColores.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-        
-        btnFrutas = new JButton("FRUTAS");
-        btnFrutas.setFont(new java.awt.Font("Arial", 0, 25));
-        btnFrutas.setBounds(50,320, 410,50);
-        btnFrutas.setBackground(new java.awt.Color(124, 168, 233));
-        btnFrutas.setForeground(new java.awt.Color(0, 0, 0));
-        btnFrutas.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-        
-        btnAnimales = new JButton("ANIMALES");
-        btnAnimales.setFont(new java.awt.Font("Arial", 0, 25));
-        btnAnimales.setBounds(50,390, 410,50);
-        btnAnimales.setBackground(new java.awt.Color(245, 218, 166));
-        btnAnimales.setForeground(new java.awt.Color(0, 0, 0));
-        btnAnimales.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-        
-        jpContenido.add(btnColores);
-        jpContenido.add(btnFrutas);
-        jpContenido.add(btnAnimales);
+        jpContenido.add(btnAtras);
         
         Image miIcono = miPantalla.getImage("src/imagenes/icono.png");
 	setIconImage(miIcono);
