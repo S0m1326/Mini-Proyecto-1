@@ -5,6 +5,7 @@
 package vista;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -61,7 +62,10 @@ public class VentanaInstrucciones extends JFrame {
         jlTitulo.setFont(new Font("Showcard Gothic", Font.PLAIN, 36));
         instrucciones = new JLabel(texto);
         instrucciones.setFont(new java.awt.Font("Arial", 0, 25));
-        
+        instrucciones.setPreferredSize(new Dimension(520, 500));
+        instrucciones.setVerticalAlignment(JLabel.TOP);
+        instrucciones.setHorizontalAlignment(JLabel.LEFT);
+                
         jpContenido.setBackground(new java.awt.Color(178, 221, 185));
         jpContenido.setSize(520,500);        
         jpContenido.setBounds(0,0, 520, 500);
@@ -80,14 +84,55 @@ public class VentanaInstrucciones extends JFrame {
         
         btnAtras = new JButton("ATRAS");
         btnAtras.setFont(new java.awt.Font("Arial", 0, 25));
-        btnAtras.setBounds(50,400, 410,50);
+        btnAtras.setBounds(200,400, 100,50);
         btnAtras.setBackground(new java.awt.Color(245, 166, 166));
         btnAtras.setForeground(new java.awt.Color(0, 0, 0));
         btnAtras.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         
         jpContenido.add(btnAtras);
         
+        ManejadorDeEventos manejadorEventos = new ManejadorDeEventos();
+        
+        btnAtras.addActionListener(manejadorEventos);
+        
         Image miIcono = miPantalla.getImage("src/imagenes/icono.png");
 	setIconImage(miIcono);
+    }
+    
+    private void iniciarMenu(){
+        
+    }
+    
+    class ManejadorDeEventos implements ActionListener, KeyListener{
+        @Override
+        public void actionPerformed(ActionEvent evento){
+            if(evento.getSource() == btnAtras){                
+                dispose();
+                iniciarMenu();
+                VentanaMenu Menu = new VentanaMenu();
+            }
+        }
+        
+        @Override
+        public void keyReleased(KeyEvent e) {
+           /* System.out.println("Se liberó la tecla " + e.getKeyChar() +
+                    " Con codigo " + e.getKeyCode());*/
+            if(e.getKeyCode() == e.VK_ENTER){
+                btnAtras.doClick();
+            }
+        }
+        
+        @Override
+        public void keyPressed(KeyEvent e) {
+            /*System.out.println("Se presionó la tecla " + e.getKeyChar()+
+                    " Con codigo " + e.getKeyCode());*/
+            
+        }
+        
+        @Override
+        public void keyTyped(KeyEvent e) {
+            /*System.out.println("Se digitó la tecla " + e.getKeyChar()+
+                    " Con codigo " + e.getKeyCode());*/
+        }
     }
 }
