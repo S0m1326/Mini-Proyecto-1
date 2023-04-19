@@ -61,12 +61,7 @@ public class VentanaInstrucciones extends JFrame {
         jpContenido = new JPanel();
         jpBotones = new JPanel();
         
-        String texto = "Fuga de Vocales, es un juego muy divertido\n"
-                +  "y sencillo, para empezar debes hacer lo siguiente:\n" +
-                   "\n1. Agregar tu Nombre. " +
-                   "\n2. Escoger la temática con la que deseas jugar. " +
-                   "\n3. Ver la palabra en pantalla y escoger la vocal que le hace falta. " +
-                   "\n4. Eso es todo amigos";
+        String texto = "Escoge la vocal que le falta a la palabra";
         
         jlTitulo = new JLabel("INSTRUCCIONES",SwingConstants.CENTER);
         jlTitulo.setFont(new Font("Showcard Gothic", Font.PLAIN, 36));
@@ -86,7 +81,7 @@ public class VentanaInstrucciones extends JFrame {
         jlTitulo.setBounds(0,20, 520,50);
         jlTitulo.setForeground(Color.BLACK); 
         
-        instrucciones.setBounds(10,100, 510,500);
+        instrucciones.setBounds(25,100, 510,500);
         instrucciones.setForeground(new Color(0,0,0));
         
         jpContenido.add(jlTitulo);
@@ -150,7 +145,7 @@ public class VentanaInstrucciones extends JFrame {
         
         btnAtras = new JButton("VOLVER");
         btnAtras.setFont(new java.awt.Font("Arial", 0, 25));
-        btnAtras.setBounds(180,420, 150,50);
+        btnAtras.setBounds(110,420, 300,50);
         btnAtras.setBackground(new java.awt.Color(245, 166, 166));
         btnAtras.setForeground(new java.awt.Color(0, 0, 0));
         btnAtras.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
