@@ -27,8 +27,7 @@ import logica.Juego;
  * @author Sebastián
  */
 public class VentanaJuego extends JFrame {
-    
-    private String[] Tematica;    
+        
     private JPanel jpContenido;
     private GridLayout PanelBotones;
     private JPanel jpBotones;
