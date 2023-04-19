@@ -10,6 +10,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -50,6 +51,9 @@ public class VentanaEstadisticas extends JFrame {
         num_Aciertos = Juego.getAciertos();
         prc_Aciertos = (double) num_Aciertos / (num_Aciertos+num_Fallos) * 100;
         prc_Fallos = (double) num_Fallos / (num_Aciertos+num_Fallos) * 100;
+        DecimalFormat formato = new DecimalFormat("0.0");
+        String porcentajeAciertos = formato.format(prc_Aciertos);
+        String porcentajeFallos = formato.format(prc_Fallos);
         
         setTitle("Estadisticas");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -67,9 +71,9 @@ public class VentanaEstadisticas extends JFrame {
         jlTitulo.setFont(new Font("Showcard Gothic", Font.PLAIN, 60));
         jlPalabras = new JLabel("Cantidad de Palabras: " + num_Palabras,SwingConstants.CENTER );
         jlPalabras.setFont(new java.awt.Font("Arial", 0, 25));
-        jlFallos = new JLabel("Cantidad de Fallos: " + num_Fallos + " - " + prc_Fallos + "%",SwingConstants.CENTER );
+        jlFallos = new JLabel("Cantidad de Fallos: " + num_Fallos + " - " + porcentajeFallos + "%",SwingConstants.CENTER );
         jlFallos.setFont(new java.awt.Font("Arial", 0, 25));
-        jlAciertos = new JLabel("Cantidad de Aciertos: " + num_Aciertos + " - " + prc_Aciertos + "%",SwingConstants.CENTER );
+        jlAciertos = new JLabel("Cantidad de Aciertos: " + num_Aciertos + " - " + porcentajeAciertos + "%",SwingConstants.CENTER );
         jlAciertos.setFont(new java.awt.Font("Arial", 0, 25));
         
         jpContenido.setBackground(new java.awt.Color(124, 168, 233));
