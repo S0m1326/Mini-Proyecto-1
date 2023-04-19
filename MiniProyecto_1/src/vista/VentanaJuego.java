@@ -11,6 +11,8 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Random;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -49,6 +51,7 @@ public class VentanaJuego extends JFrame {
     private int aciertos = 0;
     private int fallos = 0;
     private String[] tematica;
+    private String vocalS;
     
     public VentanaJuego(Jugador jugador, String[] tematica) {
         juego = new Juego(jugador, tematica);
@@ -100,11 +103,11 @@ public class VentanaJuego extends JFrame {
         
         jlAciertos = new JLabel("Aciertos: " + aciertos );
         jlAciertos.setFont(new java.awt.Font("Arial", 0, 25));
-        jlAciertos.setBounds(110,140,125,50);
+        jlAciertos.setBounds(110,140,125,75);
         
         jlFallos = new JLabel("Fallos: " + fallos );
         jlFallos.setFont(new java.awt.Font("Arial", 0, 25));
-        jlFallos.setBounds(300,140,125,50);
+        jlFallos.setBounds(300,140,125,75);
         
         jpContenido.add(jlPalabra);
         jpContenido.add(jlJugador);
@@ -189,16 +192,31 @@ public class VentanaJuego extends JFrame {
     
     private void cambiarPalabra(JLabel jlPalabra) {
         contador = contador+1;
-        palabraActual = tematica[palabraActualIndex++];
-        String palabraMostrar = palabraActual.substring(0, palabraActual.length() - 1) + "_";
+        palabraActual = tematica[palabraActualIndex];
+        
+        ArrayList<Character> vocales = new ArrayList<Character>();
+        for (char letra : palabraActual.toCharArray()) {
+            if ("aeiou".indexOf(letra) != -1) {
+                vocales.add(letra);
+            }
+        }
+        
+        Random rnd = new Random();
+        char vocal = vocales.get(rnd.nextInt(vocales.size()));
+        vocalS = String.valueOf(vocal);
+        
+        String palabraMostrar = tematica[palabraActualIndex].replaceFirst(vocalS, "_");
+//        String palabraMostrar = palabraActual.substring(0, palabraActual.length() - 1) + "_";
         jlPalabra.setText(palabraMostrar);
+        palabraActualIndex++;
         if (palabraActualIndex == tematica.length) {
             palabraActualIndex = 0;
         }
     }
     
     private void verificacion (String letra) {
-        if (letra.equalsIgnoreCase(palabraActual.substring(palabraActual.length() - 1))) {
+        if (letra.equalsIgnoreCase(vocalS)) {
+//      if (letra.equalsIgnoreCase(palabraActual.substring(palabraActual.length() - 1))) {
             aciertos++;
             jlAciertos.setText("Aciertos: " + aciertos);
             cambiarPalabra(jlPalabra);

@@ -46,6 +46,7 @@ public class VentanaEstadisticas extends JFrame {
     
     private void initComponents() {
         num_Palabras = Juego.getPalabras();
+        num_Palabras = num_Palabras-1;
         num_Fallos = Juego.getFallos();
         num_Aciertos = Juego.getAciertos();
         prc_Aciertos = (double) num_Aciertos / (num_Aciertos+num_Fallos) * 100;
