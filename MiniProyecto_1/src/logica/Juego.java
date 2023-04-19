@@ -4,9 +4,7 @@
  */
 package logica;
 
-import java.util.Arrays;
 import modelo.Jugador;
-import vista.VentanaJuego;
 
 /**
  *
