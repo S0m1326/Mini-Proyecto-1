@@ -33,9 +33,9 @@ public class VentanaTematica extends JFrame {
     private JLabel jlTematica;
     private JLabel jlNombre;
     private JTextField txtNombre;
-    private String[] Colores = {"ROJO", "AMARILLO",  "ROSA" ,"VERDE", "BLANCO", "VIOLETA"};
-    private String[] Frutas = {"PAPAYA","MANGO", "MANZANA",  "TOMATE" ,"FRESA", "KIWI", "BANANO"};
-    private String[] Animales = {"PERRO","ELEFANTE","JIRAFA", "GATO",  "TIGRE" ,"CONEJO", "PALOMA"};
+    private String[] Colores = {"Rojo", "Naranja", "Amarillo", "Verde", "Azul", "Morado", "Rosa", "Cian", "Turquesa", "Coral", "Marrón", "Gris", "Oro", "Plata", "Blanco", "Negro", "Beige", "Caqui", "Fucsia", "Violeta", "Lila", "Salmon"};
+    private String[] Frutas = {"Manzana", "Naranja", "Plátano", "Fresa", "Kiwi", "Mango", "Piña", "Melón", "Sandía", "Limón", "Cereza", "Uva", "Melocotón", "Albaricoque", "Mandarina", "Pera", "Ciruela", "Granada", "Mamey", "Guayaba", "Coco", "Papaya", "Lichi", "Mora", "Frambuesa"};
+    private String[] Animales = {"Perro", "Gato", "León", "Tigre", "Elefante", "Jirafa", "Cebra", "Mono", "Oso", "Rinoceronte", "Hipopótamo", "Camello", "Caballo", "Vaca", "Conejo", "Ratón", "Erizo", "Zorro", "Lobo", "Zarigüeya", "Murciélago", "Nutria", "Cangrejo", "Pulpo", "Ballena"};
     
     public VentanaTematica() {
         initComponents();
