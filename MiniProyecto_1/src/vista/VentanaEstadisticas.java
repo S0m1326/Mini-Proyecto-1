@@ -48,6 +48,7 @@ public class VentanaEstadisticas extends JFrame {
     
     private void initComponents() {
         num_Palabras = Juego.getPalabras();
+        num_Palabras = num_Palabras - 1;
         num_Fallos = Juego.getFallos();
         num_Aciertos = Juego.getAciertos();
         prc_Aciertos = (double) num_Aciertos / (num_Aciertos+num_Fallos) * 100;
@@ -125,9 +126,7 @@ public class VentanaEstadisticas extends JFrame {
         
         VentanaEstadisticas.ManejadorDeEventos manejadorEventos = new VentanaEstadisticas.ManejadorDeEventos();
         
-            
         btnInicio.addActionListener(manejadorEventos);
-        
         btnSalir.addActionListener(manejadorEventos);
     }
     
@@ -138,6 +137,10 @@ public class VentanaEstadisticas extends JFrame {
     class ManejadorDeEventos implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent evento){
+            if(evento.getSource() == btnInicio){                
+                dispose();
+                VentanaMenu Menu = new VentanaMenu();
+            }
             if(evento.getSource() == btnSalir){
                 System.exit(0);
             }
