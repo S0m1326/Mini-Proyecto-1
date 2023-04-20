@@ -10,6 +10,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -38,6 +39,8 @@ public class VentanaEstadisticas extends JFrame {
     private double prc_Aciertos;
     private double prc_Fallos;
     private Juego Juego;
+    private JButton btnInicio;
+    private JPanel jpBotones;
     
     public VentanaEstadisticas(Jugador jugadorEst) {
         Juego = new Juego(jugadorEst);
@@ -46,11 +49,14 @@ public class VentanaEstadisticas extends JFrame {
     
     private void initComponents() {
         num_Palabras = Juego.getPalabras();
-        num_Palabras = num_Palabras-1;
+        num_Palabras = num_Palabras - 1;
         num_Fallos = Juego.getFallos();
         num_Aciertos = Juego.getAciertos();
         prc_Aciertos = (double) num_Aciertos / (num_Aciertos+num_Fallos) * 100;
         prc_Fallos = (double) num_Fallos / (num_Aciertos+num_Fallos) * 100;
+        DecimalFormat formato = new DecimalFormat("0.0");
+        String porcentajeAciertos = formato.format(prc_Aciertos);
+        String porcentajeFallos = formato.format(prc_Fallos);
         
         setTitle("Estadisticas");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,6 +69,7 @@ public class VentanaEstadisticas extends JFrame {
         Toolkit miPantalla = Toolkit.getDefaultToolkit();
          
         jpContenido = new JPanel();
+        jpBotones = new JPanel();
         
         jlTitulo = new JLabel("ESTADÍSTICAS",SwingConstants.CENTER);
         jlTitulo.setFont(new Font("Showcard Gothic", Font.PLAIN, 60));
@@ -97,9 +104,18 @@ public class VentanaEstadisticas extends JFrame {
         jpContenido.add(jlFallos);
         jpContenido.add(jlAciertos);
         
+        btnInicio = new JButton("INICIO");
+        btnInicio.setFont(new java.awt.Font("Arial", 0, 25));
+        btnInicio.setBounds(110,255, 300,40);
+        btnInicio.setBackground(new java.awt.Color(245, 218, 166));
+        btnInicio.setForeground(new java.awt.Color(0, 0, 0));
+        btnInicio.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        
+        jpContenido.add(btnInicio);
+        
         btnSalir = new JButton("Salir");
         btnSalir.setFont(new java.awt.Font("Arial", 0, 25));
-        btnSalir.setBounds(50,270, 410,50);
+        btnSalir.setBounds(110,310, 300,40);
         btnSalir.setBackground(new java.awt.Color(245, 166, 166));
         btnSalir.setForeground(new java.awt.Color(0, 0, 0));
         btnSalir.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
@@ -111,12 +127,17 @@ public class VentanaEstadisticas extends JFrame {
         
         VentanaEstadisticas.ManejadorDeEventos manejadorEventos = new VentanaEstadisticas.ManejadorDeEventos();
         
+        btnInicio.addActionListener(manejadorEventos);
         btnSalir.addActionListener(manejadorEventos);
     }
     
     class ManejadorDeEventos implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent evento){
+            if(evento.getSource() == btnInicio){                
+                dispose();
+                VentanaMenu Menu = new VentanaMenu();
+            }
             if(evento.getSource() == btnSalir){
                 System.exit(0);
             }

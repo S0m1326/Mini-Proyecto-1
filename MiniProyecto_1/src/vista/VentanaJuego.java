@@ -90,23 +90,28 @@ public class VentanaJuego extends JFrame {
         
         jlPalabra = new JLabel("",SwingConstants.CENTER);
         jlPalabra.setFont(new java.awt.Font("Arial", 0, 75));
-        jlPalabra.setBounds(0,200,520,75);
+        jlPalabra.setBounds(0,180,520,75);
+        jlPalabra.setForeground(Color.BLACK);
         
-        jlJugador = new JLabel("Jugador: "+nombre,SwingConstants.CENTER );
+        jlJugador = new JLabel("Jugador: " + nombre,SwingConstants.CENTER );
         jlJugador.setFont(new java.awt.Font("Arial", 0, 25));
         jlJugador.setBounds(0,60,520,50);
+        jlJugador.setForeground(Color.BLACK);
         
         jlPalabras = new JLabel("Palabras mostradas: " + contador, SwingConstants.CENTER );
         jlPalabras.setFont(new java.awt.Font("Arial", 0, 25));
         jlPalabras.setBounds(0,100,520,50);
+        jlPalabras.setForeground(Color.BLACK);
         
         jlAciertos = new JLabel("Aciertos: " + aciertos );
         jlAciertos.setFont(new java.awt.Font("Arial", 0, 25));
         jlAciertos.setBounds(110,140,125,75);
+        jlAciertos.setForeground(Color.BLACK);
         
         jlFallos = new JLabel("Fallos: " + fallos );
         jlFallos.setFont(new java.awt.Font("Arial", 0, 25));
         jlFallos.setBounds(300,140,125,75);
+        jlFallos.setForeground(Color.BLACK);
         
         jpContenido.add(jlPalabra);
         jpContenido.add(jlJugador);
@@ -127,35 +132,35 @@ public class VentanaJuego extends JFrame {
         btnA = new JButton("A");
         btnA.setFont(new java.awt.Font("Britannic Bold", 0, 75));
 //        btnA.setBounds(50,150, 410,50);
-        btnA.setBackground(new java.awt.Color(245, 218, 166));
+        btnA.setBackground(new java.awt.Color(200, 200, 200));
         btnA.setForeground(new java.awt.Color(0, 0, 0));
         btnA.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         
         btnE = new JButton("E");
         btnE.setFont(new java.awt.Font("Britannic Bold", 0, 75));
 //        btnE.setBounds(50,290, 410,50);
-        btnE.setBackground(new java.awt.Color(245, 218, 166));
+        btnE.setBackground(new java.awt.Color(200, 200, 200));
         btnE.setForeground(new java.awt.Color(0, 0, 0));
         btnE.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));        
         
         btnI = new JButton("I");
         btnI.setFont(new java.awt.Font("Britannic Bold", 0, 75));
 //        btnI.setBounds(50,220, 410,50);
-        btnI.setBackground(new java.awt.Color(245, 218, 166));
+        btnI.setBackground(new java.awt.Color(200, 200, 200));
         btnI.setForeground(new java.awt.Color(0, 0, 0));
         btnI.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         
         btnO = new JButton("O");
         btnO.setFont(new java.awt.Font("Britannic Bold", 0, 75));
 //        btnO.setBounds(50,290, 410,50);
-        btnO.setBackground(new java.awt.Color(245, 218, 166));
+        btnO.setBackground(new java.awt.Color(200, 200, 200));
         btnO.setForeground(new java.awt.Color(0, 0, 0));
         btnO.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         
         btnU = new JButton("U");
         btnU.setFont(new java.awt.Font("Britannic Bold", 0, 75));
 //        btnU.setBounds(50,290, 410,50);
-        btnU.setBackground(new java.awt.Color(245, 218, 166));
+        btnU.setBackground(new java.awt.Color(200, 200, 200));
         btnU.setForeground(new java.awt.Color(0, 0, 0));
         btnU.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         
