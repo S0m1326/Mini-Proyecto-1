@@ -89,8 +89,9 @@ public class VentanaJuego extends JFrame {
         jlTitulo.setForeground(Color.BLACK); 
         
         jlPalabra = new JLabel("",SwingConstants.CENTER);
-        jlPalabra.setFont(new java.awt.Font("Arial", 0, 90));
-        jlPalabra.setBounds(0,180,520,110);
+        jlPalabra.setVerticalAlignment(SwingConstants.TOP);
+        jlPalabra.setFont(new java.awt.Font("Arial", 0, 65));
+        jlPalabra.setBounds(0,200,500,100);
         jlPalabra.setForeground(Color.BLACK);
         
         jlJugador = new JLabel("Jugador: " + nombre,SwingConstants.CENTER );
@@ -105,12 +106,12 @@ public class VentanaJuego extends JFrame {
         
         jlAciertos = new JLabel("Aciertos: " + aciertos );
         jlAciertos.setFont(new java.awt.Font("Arial", 0, 25));
-        jlAciertos.setBounds(110,140,125,75);
+        jlAciertos.setBounds(110,130,125,75);
         jlAciertos.setForeground(Color.BLACK);
         
         jlFallos = new JLabel("Fallos: " + fallos );
         jlFallos.setFont(new java.awt.Font("Arial", 0, 25));
-        jlFallos.setBounds(300,140,125,75);
+        jlFallos.setBounds(300,130,125,75);
         jlFallos.setForeground(Color.BLACK);
         
         jpContenido.add(jlPalabra);
@@ -211,7 +212,7 @@ public class VentanaJuego extends JFrame {
         
         String palabraMostrar = tematica[palabraActualIndex].replaceFirst(vocalS, "_");
 //        String palabraMostrar = palabraActual.substring(0, palabraActual.length() - 1) + "_";
-        jlPalabra.setText(palabraMostrar);
+        jlPalabra.setText(palabraMostrar.toUpperCase());
         palabraActualIndex++;
         if (palabraActualIndex == tematica.length) {
             palabraActualIndex = 0;
