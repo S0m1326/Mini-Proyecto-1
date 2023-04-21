@@ -204,6 +204,11 @@ public class VentanaJuego extends JFrame {
     }
     
     private void cambiarPalabra(JLabel jlPalabra) {
+        btnA.setBackground(new java.awt.Color(200, 200, 200));
+        btnE.setBackground(new java.awt.Color(200, 200, 200));
+        btnI.setBackground(new java.awt.Color(200, 200, 200));
+        btnO.setBackground(new java.awt.Color(200, 200, 200));
+        btnU.setBackground(new java.awt.Color(200, 200, 200));
         contador = contador+1;
         palabraActual = tematica[palabraActualIndex];
         
@@ -227,15 +232,21 @@ public class VentanaJuego extends JFrame {
         }
     }
     
-    private void verificacion (String letra) {
+    private boolean verificacion (String letra) {
+        
         if (letra.equalsIgnoreCase(vocalS)) {
-//      if (letra.equalsIgnoreCase(palabraActual.substring(palabraActual.length() - 1))) {
+            
+            //      if (letra.equalsIgnoreCase(palabraActual.substring(palabraActual.length() - 1))) {
             aciertos++;
             jlAciertos.setText("Aciertos: " + aciertos);
             cambiarPalabra(jlPalabra);
+            return true;
         } else {
+                                   
             fallos++;
             jlFallos.setText("Fallos: " + fallos);
+            return false;
+       
         }
     }
     
@@ -244,23 +255,33 @@ public class VentanaJuego extends JFrame {
         public void actionPerformed(ActionEvent evento){
             if(evento.getSource() == btnA){             
                 String letra = btnA.getText();
-                verificacion(letra);
+                if (verificacion(letra)==false){
+                    btnA.setBackground(new java.awt.Color(255, 98, 65));
+                }
             }
             if(evento.getSource() == btnE){
                 String letra = btnE.getText();
-                verificacion(letra);
+                if (verificacion(letra)==false){
+                    btnE.setBackground(new java.awt.Color(255, 98, 65));
+                }
             }
             if(evento.getSource() == btnI){
                 String letra = btnI.getText();
-                verificacion(letra);
+                if (verificacion(letra)==false){
+                    btnI.setBackground(new java.awt.Color(255, 98, 65));
+                }
             }
             if(evento.getSource() == btnO){
                 String letra = btnO.getText();
-                verificacion(letra);
+                if (verificacion(letra)==false){
+                    btnO.setBackground(new java.awt.Color(255, 98, 65));
+                }
             }
             if(evento.getSource() == btnU){
                 String letra = btnU.getText();
-                verificacion(letra);
+                if (verificacion(letra)==false){
+                    btnU.setBackground(new java.awt.Color(255, 98, 65));
+                }
             }
             if(evento.getSource() == btnTerminar){
                 dispose();
@@ -270,4 +291,3 @@ public class VentanaJuego extends JFrame {
         }
     }
 }
-    
