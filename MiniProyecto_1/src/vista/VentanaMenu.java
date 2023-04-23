@@ -64,6 +64,7 @@ public class VentanaMenu extends JFrame {
         
         jpHeader.setSize(519,165);
         jpHeader.setBounds(0,90, 519,165);
+
                 
         jpContenido.setBackground(new java.awt.Color(245, 166, 166));
         jpContenido.setSize(520,500);        
