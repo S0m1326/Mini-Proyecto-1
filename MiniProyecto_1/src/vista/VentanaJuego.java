@@ -20,6 +20,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Random;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -52,13 +53,13 @@ public class VentanaJuego extends JFrame {
     private JLabel jlFallos;
     private JLabel jlPalabra;
     private Juego juego;
-    private int palabraActualIndex = 0;
     private String palabraActual;
     private int contador = 0;
     private int aciertos = 0;
     private int fallos = 0;
     private String[] tematica;
     private String vocalS;
+    HashSet<String> palabrasSeleccionadas = new HashSet<String>();
     
     public VentanaJuego(Jugador jugador, String[] tematica) {
         juego = new Juego(jugador, tematica);
@@ -114,7 +115,7 @@ public class VentanaJuego extends JFrame {
         
         jlAciertos = new JLabel("Aciertos: " + aciertos );
         jlAciertos.setFont(new java.awt.Font("Arial", 0, 25));
-        jlAciertos.setBounds(110,130,125,75);
+        jlAciertos.setBounds(110,130,135,75);
         jlAciertos.setForeground(Color.BLACK);
         
         jlFallos = new JLabel("Fallos: " + fallos );
@@ -210,25 +211,35 @@ public class VentanaJuego extends JFrame {
         btnO.setBackground(new java.awt.Color(200, 200, 200));
         btnU.setBackground(new java.awt.Color(200, 200, 200));
         contador = contador+1;
+        
+        Random rnd = new Random();        
+        Random rand = new Random();
+            
+        int palabraActualIndex = rand.nextInt(tematica.length);
         palabraActual = tematica[palabraActualIndex];
         
         ArrayList<Character> vocales = new ArrayList<Character>();
         for (char letra : palabraActual.toCharArray()) {
             if ("aeiou".indexOf(letra) != -1) {
-                vocales.add(letra);
-            }
+            vocales.add(letra);
         }
+    }
         
-        Random rnd = new Random();
         char vocal = vocales.get(rnd.nextInt(vocales.size()));
-        vocalS = String.valueOf(vocal);
-        
-        String palabraMostrar = tematica[palabraActualIndex].replaceFirst(vocalS, "_");
-//        String palabraMostrar = palabraActual.substring(0, palabraActual.length() - 1) + "_";
-        jlPalabra.setText(palabraMostrar.toUpperCase());
-        palabraActualIndex++;
-        if (palabraActualIndex == tematica.length) {
-            palabraActualIndex = 0;
+        vocalS = String.valueOf(vocal);           
+            
+        if (!palabrasSeleccionadas.contains(palabraActual)) {
+            String palabraMostrar = palabraActual.replaceFirst(vocalS, "_");
+            jlPalabra.setText(palabraMostrar.toUpperCase());
+            palabrasSeleccionadas.add(palabraActual);
+            System.out.println(palabraActual);
+            System.out.println(palabrasSeleccionadas);
+            System.out.println(palabrasSeleccionadas.size());
+        }else {
+            cambiarPalabra(jlPalabra);
+        }
+        if (palabrasSeleccionadas.size() == tematica.length) {
+        palabrasSeleccionadas.clear();
         }
     }
     
