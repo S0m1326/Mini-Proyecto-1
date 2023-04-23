@@ -69,7 +69,7 @@ public class VentanaTematica extends JFrame {
         jpColores = new Header("/imagenes/Colores.png");
         
         jlTitulo = new JLabel("FUGA DE LETRAS",SwingConstants.CENTER);
-        jlTitulo.setFont(new Font("Showcard Gothic", Font.PLAIN, 36));
+        jlTitulo.setFont(new Font("Showcard Gothic", Font.PLAIN, 60));
         jlTematica = new JLabel("Selecciona la temática del juego:",SwingConstants.CENTER );
         jlTematica.setFont(new java.awt.Font("Arial", 0, 25));
         jlNombre = new JLabel("Ingresa tu nombre:",SwingConstants.CENTER );
@@ -89,7 +89,7 @@ public class VentanaTematica extends JFrame {
         add(jpAnimales);
         add(jpContenido);
         
-        jlTitulo.setBounds(0,20, 520,50);
+        jlTitulo.setBounds(0,25, 520,75);
         jlTitulo.setForeground(Color.BLACK); 
         
         jlNombre.setBounds(0,100, 520,35);
