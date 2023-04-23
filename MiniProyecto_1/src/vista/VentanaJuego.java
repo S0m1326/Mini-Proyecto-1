@@ -232,9 +232,6 @@ public class VentanaJuego extends JFrame {
             String palabraMostrar = palabraActual.replaceFirst(vocalS, "_");
             jlPalabra.setText(palabraMostrar.toUpperCase());
             palabrasSeleccionadas.add(palabraActual);
-            System.out.println(palabraActual);
-            System.out.println(palabrasSeleccionadas);
-            System.out.println(palabrasSeleccionadas.size());
         }else {
             cambiarPalabra(jlPalabra);
         }

@@ -100,10 +100,10 @@ public class VentanaEstadisticas extends JFrame {
         jlPalabras.setBounds(0,100, 520,35);
         jlPalabras.setForeground(new Color(0,0,0));
         
-        jlFallos.setBounds(0,150, 520,35);
+        jlFallos.setBounds(0,200, 520,35);
         jlFallos.setForeground(new Color(0,0,0));
         
-        jlAciertos.setBounds(0,200, 520,35);
+        jlAciertos.setBounds(0,150, 520,35);
         jlAciertos.setForeground(new Color(0,0,0));
         
         jpContenido.add(jlTitulo);
