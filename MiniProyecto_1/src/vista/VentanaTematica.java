@@ -36,6 +36,9 @@ public class VentanaTematica extends JFrame {
     private JButton btnColores;
     private JButton btnFrutas;
     private JButton btnAnimales;
+    private Header jpAnimales;
+    private Header jpFrutas;
+    private Header jpColores;
     private JPanel jpContenido;
     private JLabel jlTitulo;
     private JLabel jlTematica;
@@ -61,6 +64,9 @@ public class VentanaTematica extends JFrame {
         Toolkit miPantalla = Toolkit.getDefaultToolkit();
          
         jpContenido = new JPanel();
+        jpAnimales = new Header("/imagenes/Animales.png");
+        jpFrutas = new Header("/imagenes/Frutas.png");
+        jpColores = new Header("/imagenes/Colores.png");
         
         jlTitulo = new JLabel("FUGA DE LETRAS",SwingConstants.CENTER);
         jlTitulo.setFont(new Font("Showcard Gothic", Font.PLAIN, 36));
@@ -74,6 +80,13 @@ public class VentanaTematica extends JFrame {
         jpContenido.setBounds(0,0, 520, 500);
         jpContenido.setLayout(null);
         
+        jpAnimales.setBounds(370, 370, 100, 100);
+        jpFrutas.setBounds(365, 290, 100, 100);
+        jpColores.setBounds(385, 235, 100, 100);
+        
+        add(jpColores);
+        add(jpFrutas);
+        add(jpAnimales);
         add(jpContenido);
         
         jlTitulo.setBounds(0,20, 520,50);
@@ -101,21 +114,21 @@ public class VentanaTematica extends JFrame {
         
         btnColores = new JButton("COLORES");
         btnColores.setFont(new java.awt.Font("Arial", 0, 25));
-        btnColores.setBounds(50,250, 410,50);
+        btnColores.setBounds(50,250, 310,50);
         btnColores.setBackground(new java.awt.Color(245, 166, 166));
         btnColores.setForeground(new java.awt.Color(0, 0, 0));
         btnColores.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         
         btnFrutas = new JButton("FRUTAS");
         btnFrutas.setFont(new java.awt.Font("Arial", 0, 25));
-        btnFrutas.setBounds(50,320, 410,50);
+        btnFrutas.setBounds(50,320, 310,50);
         btnFrutas.setBackground(new java.awt.Color(124, 168, 233));
         btnFrutas.setForeground(new java.awt.Color(0, 0, 0));
         btnFrutas.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         
         btnAnimales = new JButton("ANIMALES");
         btnAnimales.setFont(new java.awt.Font("Arial", 0, 25));
-        btnAnimales.setBounds(50,390, 410,50);
+        btnAnimales.setBounds(50,390, 310,50);
         btnAnimales.setBackground(new java.awt.Color(245, 218, 166));
         btnAnimales.setForeground(new java.awt.Color(0, 0, 0));
         btnAnimales.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));

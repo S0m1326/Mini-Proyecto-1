@@ -33,6 +33,7 @@ import java.awt.event.KeyListener;
  */
 public class VentanaMenu extends JFrame {
     
+    private Header jpHeader;
     private String nombre;
     private JButton btnJugar;
     private JButton btnInstrucciones;
@@ -47,7 +48,7 @@ public class VentanaMenu extends JFrame {
     private void initComponents() {
         setTitle("Menú");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(519,400);
+        setSize(519,500);
         setLocationRelativeTo(null);
         setVisible(true); 
         setResizable(false);
@@ -56,39 +57,44 @@ public class VentanaMenu extends JFrame {
         Toolkit miPantalla = Toolkit.getDefaultToolkit();
          
         jpContenido = new JPanel();
+        jpHeader = new Header("/imagenes/Header.png");
         
         jlTitulo = new JLabel("FUGA DE LETRAS",SwingConstants.CENTER);
         jlTitulo.setFont(new Font("Showcard Gothic", Font.PLAIN, 60));
+        
+        jpHeader.setSize(519,165);
+        jpHeader.setBounds(0,90, 519,165);
                 
         jpContenido.setBackground(new java.awt.Color(245, 166, 166));
-        jpContenido.setSize(520,400);        
-        jpContenido.setBounds(0,0, 519, 400);
+        jpContenido.setSize(520,500);        
+        jpContenido.setBounds(0,0, 519, 500);
         jpContenido.setLayout(null);
         
+        add(jpHeader);
         add(jpContenido);
         
-        jlTitulo.setBounds(0,50, 519,75);
+        jlTitulo.setBounds(0,25, 519,75);
         jlTitulo.setForeground(Color.BLACK);
                 
         jpContenido.add(jlTitulo);
         
         btnJugar = new JButton("JUGAR");
         btnJugar.setFont(new java.awt.Font("Arial", 0, 25));
-        btnJugar.setBounds(50,150, 410,50);
+        btnJugar.setBounds(50,250, 410,50);
         btnJugar.setBackground(new java.awt.Color(178, 221, 185));
         btnJugar.setForeground(new java.awt.Color(0, 0, 0));
         btnJugar.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         
         btnInstrucciones = new JButton("INSTRUCCIONES");
         btnInstrucciones.setFont(new java.awt.Font("Arial", 0, 25));
-        btnInstrucciones.setBounds(50,220, 410,50);
+        btnInstrucciones.setBounds(50,320, 410,50);
         btnInstrucciones.setBackground(new java.awt.Color(124, 168, 233));
         btnInstrucciones.setForeground(new java.awt.Color(0, 0, 0));
         btnInstrucciones.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         
         btnSalir = new JButton("SALIR");
         btnSalir.setFont(new java.awt.Font("Arial", 0, 25));
-        btnSalir.setBounds(50,290, 410,50);
+        btnSalir.setBounds(50,390, 410,50);
         btnSalir.setBackground(new java.awt.Color(245, 218, 166));
         btnSalir.setForeground(new java.awt.Color(0, 0, 0));
         btnSalir.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));

@@ -111,7 +111,7 @@ public class VentanaEstadisticas extends JFrame {
         jpContenido.add(jlFallos);
         jpContenido.add(jlAciertos);
         
-        btnInicio = new JButton("INICIO");
+        btnInicio = new JButton("Inicio");
         btnInicio.setFont(new java.awt.Font("Arial", 0, 25));
         btnInicio.setBounds(110,255, 300,40);
         btnInicio.setBackground(new java.awt.Color(245, 218, 166));
