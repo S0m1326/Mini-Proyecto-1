@@ -36,9 +36,9 @@ public class VentanaTematica extends JFrame {
     private JButton btnColores;
     private JButton btnFrutas;
     private JButton btnAnimales;
-    private Header jpAnimales;
-    private Header jpFrutas;
-    private Header jpColores;
+    private Encabezado jpAnimales;
+    private Encabezado jpFrutas;
+    private Encabezado jpColores;
     private JPanel jpContenido;
     private JLabel jlTitulo;
     private JLabel jlTematica;
@@ -64,9 +64,9 @@ public class VentanaTematica extends JFrame {
         Toolkit miPantalla = Toolkit.getDefaultToolkit();
          
         jpContenido = new JPanel();
-        jpAnimales = new Header("/imagenes/Animales.png");
-        jpFrutas = new Header("/imagenes/Frutas.png");
-        jpColores = new Header("/imagenes/Colores.png");
+        jpAnimales = new Encabezado("/imagenes/Animales.png");
+        jpFrutas = new Encabezado("/imagenes/Frutas.png");
+        jpColores = new Encabezado("/imagenes/Colores.png");
         
         jlTitulo = new JLabel("FUGA DE LETRAS",SwingConstants.CENTER);
         jlTitulo.setFont(new Font("Showcard Gothic", Font.PLAIN, 60));

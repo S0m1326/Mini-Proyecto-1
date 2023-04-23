@@ -33,7 +33,7 @@ import java.awt.event.KeyListener;
  */
 public class VentanaMenu extends JFrame {
     
-    private Header jpHeader;
+    private Encabezado jpHeader;
     private String nombre;
     private JButton btnJugar;
     private JButton btnInstrucciones;
@@ -57,7 +57,7 @@ public class VentanaMenu extends JFrame {
         Toolkit miPantalla = Toolkit.getDefaultToolkit();
          
         jpContenido = new JPanel();
-        jpHeader = new Header("/imagenes/Header.png");
+        jpHeader = new Encabezado("/imagenes/Header.png");
         
         jlTitulo = new JLabel("FUGA DE LETRAS",SwingConstants.CENTER);
         jlTitulo.setFont(new Font("Showcard Gothic", Font.PLAIN, 60));

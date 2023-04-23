@@ -16,11 +16,11 @@ import javax.swing.JPanel;
  *
  * @author Admin
  */
-class Header extends JPanel{
+class Encabezado extends JPanel{
     ImageIcon imagen;
     String nombre;
     
-    public Header(String nombre){
+    public Encabezado(String nombre){
         this.nombre = nombre;
     }
     
